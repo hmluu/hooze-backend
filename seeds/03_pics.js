@@ -1,5 +1,5 @@
 exports.seed = function(knex) {
-  return knex.raw('ALTER SEQUENCE phone_numbers_id_seq RESTART with 4')
+  return knex.raw('ALTER SEQUENCE pics_id_seq RESTART with 4')
     .then(() => {
       return knex('pics').del()
         .then(() => {

@@ -12,12 +12,12 @@ exports.seed = function(knex) {
         },
         {
           id: 2,
-          name: 'cj',
+          name: 'CJ',
           relation: 'friend'
         },
         {
           id: 3,
-          name: 'nick',
+          name: 'Nick',
           relation: 'friend'
         }
       ]);
