@@ -1,5 +1,6 @@
 const express = require('express');
 const addToCollection = require('../addToCollection');
+const deleteFrCollection = require('../deleteFrCollection');
 const router = express.Router();
 const aws = require('aws-sdk');
 const multer = require('multer');
@@ -127,5 +128,27 @@ router.delete('/:id', isValidID, (req, res) => {
     });
   });
 });
+router.delete('/:id/pics/:pic_id',isValidID, (req, res) => {
+  queries.getOnePic(req.params.pic_id)
+  .then(result => {
+    if (result) {
+    let face_ids = result.face_ids ? result.face_ids.split(",") : []
+  
+    deleteFrCollection(face_ids)
+
+    queries.deleteFriendPics(req.params.pic_id)
+      .then(() => {
+        res.json({
+          deleted: true
+        })
+      })
+    } else {
+      res.json({
+        message: "NOT FOUND"
+      })
+    }
+  })
+})
+
 
 module.exports = router;

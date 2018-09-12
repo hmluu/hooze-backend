@@ -13,6 +13,9 @@ module.exports = {
   getOne(id) {
     return knex('friends').where('id', id).first();
   },
+  getOnePic(id) {
+    return knex('pics').where('id', id).first();
+  },
   create(friend) {
     return knex('friends').insert(friend, '*');
   },
@@ -21,6 +24,9 @@ module.exports = {
   },
   delete(id) {
     return knex('friends').where('id', id).del();
+  },
+  deleteFriendPics(id) {
+    return knex('pics').where('id', id).del();
   },
   insertPic(friend_id, image, face_ids) {
     return knex('pics').insert({

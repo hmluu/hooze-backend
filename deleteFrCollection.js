@@ -7,3 +7,17 @@ aws.config.update({
 });
 const rekognition = new aws.Rekognition();
 
+function deleteFriendPic(face_ids) {
+  let params = {
+    CollectionId: "friends",
+    FaceIds: face_ids,
+  };
+
+  rekognition.deleteFaces(params, function(err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    } else console.log(data);
+  })
+}
+
+module.exports = deleteFriendPic;

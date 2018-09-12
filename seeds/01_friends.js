@@ -5,21 +5,7 @@ exports.seed = function(knex) {
       return knex('friends').del()
         .then(() => {
       return knex('friends').insert([
-        {
-          id: 1,
-          name: 'Snow',
-          relation: 'friend'
-        },
-        {
-          id: 2,
-          name: 'CJ',
-          relation: 'friend'
-        },
-        {
-          id: 3,
-          name: 'Nick',
-          relation: 'friend'
-        }
+        
       ]);
     });
   });
